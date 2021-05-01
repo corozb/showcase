@@ -1,0 +1,15 @@
+.slider {
+  display: flex;
+  max-width: 500px;
+  width: 100%;
+  overflow-x: scroll;
+  height: calc(100vh / 3);
+  scroll-snap-type: x mandatory;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    scroll-snap-align: center;
+    object-position: center;
+  }
+}
