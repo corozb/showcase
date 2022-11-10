@@ -5,6 +5,8 @@ function App() {
   return (
     <div className='app__container'>
       <Carousel />
+      <Carousel />
+      <Carousel />
     </div>
   )
 }
