@@ -1,27 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 // Components
-import Slider, { SliderProps } from 'components/atoms/Slider/Slider'
-import { shirtService } from 'services/shirtService'
+import Slider from 'components/atoms/Slider/Slider'
 import Arrows from 'components/atoms/Arrows/Arrows'
 import './Carousel.scss'
+import useFetch from 'hooks/useFetch'
 
 function Carousel() {
-  const [data, setData] = useState<SliderProps[]>([])
-  const [isLoading, setIsLoading] = useState(false)
-
-  const fetchData = async () => {
-    setIsLoading(true)
-    try {
-      const response = await shirtService()
-      setData(response)
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
+  const { data, isLoading } = useFetch()
   const [slideIndex, setSlideIndex] = useState(1)
 
   const nextSlide = () => {
@@ -39,10 +25,6 @@ function Carousel() {
       setSlideIndex(data.length)
     }
   }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
 
   return (
     <>
