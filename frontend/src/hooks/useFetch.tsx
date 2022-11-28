@@ -1,28 +1,30 @@
 import { useState, useEffect } from 'react'
 import { SliderProps } from '@components/atoms/Slider/Slider'
-import { shirtService } from 'services/shirtService'
+import { helpHttp } from 'helpers/helpHttp'
+import { API_URL } from 'services/endpoint'
 
-const useFetch = () => {
+const api = helpHttp()
+
+const useFetch = (url: string) => {
   const [data, setData] = useState<SliderProps[]>([])
   const [isLoading, setIsLoading] = useState(false)
-
-  const fetchData = async () => {
-    setIsLoading(true)
-    try {
-      const response = await shirtService()
-      setData(response)
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setIsLoading(false)
-    }
-  }
+  const [showError, setShowError] = useState<Boolean | null>(false)
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    setIsLoading(true)
+    api.get(`${API_URL}/${url}`).then((res) => {
+      if (!res.err) {
+        setData(res)
+        setShowError(null)
+      } else {
+        setData([])
+        setShowError(true)
+      }
+      setIsLoading(false)
+    })
+  }, [url])
 
-  return { data, isLoading }
+  return { data, isLoading, showError }
 }
 
 export default useFetch

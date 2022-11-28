@@ -18,6 +18,13 @@
     height: 100%;
     object-fit: cover;
   }
+
+  &__no-data {
+    align-items: center;
+    display: flex;
+    height: inherit;
+    justify-content: center;
+  }
 }
 
 .active-anim {

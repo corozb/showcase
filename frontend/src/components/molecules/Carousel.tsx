@@ -5,14 +5,19 @@ import Slider from 'components/atoms/Slider/Slider'
 import Arrows from 'components/atoms/Arrows/Arrows'
 import './Carousel.scss'
 import useFetch from 'hooks/useFetch'
+import Loader from 'components/atoms/Loader/Loader'
 
-function Carousel() {
-  const { data, isLoading } = useFetch()
+interface CarouselProp {
+  garment: string
+}
+
+function Carousel({ garment }: CarouselProp) {
+  const { data, isLoading } = useFetch(garment)
   const [slideIndex, setSlideIndex] = useState(1)
 
   const nextSlide = () => {
-    if (slideIndex !== data.length) {
-      setSlideIndex(slideIndex + 1)
+    if (slideIndex !== data?.length) {
+      setSlideIndex((prevState) => prevState + 1)
     } else if (slideIndex === data.length) {
       setSlideIndex(1)
     }
@@ -22,18 +27,21 @@ function Carousel() {
     if (slideIndex !== 1) {
       setSlideIndex(slideIndex - 1)
     } else if (slideIndex === 1) {
-      setSlideIndex(data.length)
+      setSlideIndex(data!.length)
     }
   }
 
+  if (isLoading) {
+    return <Loader />
+  }
+  console.log(data)
+
   return (
     <>
-      {isLoading ? (
-        <h1>Cargando...</h1>
-      ) : (
-        <section className='slider_container'>
+      <section className='slider_container'>
+        {data.length > 0 ? (
           <>
-            {data.map((item, index) => {
+            {data?.map((item, index) => {
               const isActive = slideIndex === index + 1
 
               return <Slider isActive={isActive} key={item.id} image={item.image} category={item.category} />
@@ -41,8 +49,10 @@ function Carousel() {
             <Arrows moveSlide={prevSlide} />
             <Arrows direction='next' moveSlide={nextSlide} />
           </>
-        </section>
-      )}
+        ) : (
+          <h1 className='slide__no-data'>No data</h1>
+        )}
+      </section>
     </>
   )
 }

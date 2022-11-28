@@ -4,9 +4,9 @@ import './App.scss'
 function App() {
   return (
     <div className='app__container'>
-      <Carousel />
-      <Carousel />
-      <Carousel />
+      <Carousel garment='shirt' />
+      <Carousel garment='pants' />
+      <Carousel garment='shoes' />
     </div>
   )
 }
