@@ -34,7 +34,6 @@ function Carousel({ garment }: CarouselProp) {
   if (isLoading) {
     return <Loader />
   }
-  console.log(data)
 
   return (
     <>

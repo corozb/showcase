@@ -9,11 +9,14 @@ Inspiration for UI:
 ![](https://i.pinimg.com/originals/d6/e4/8c/d6e48ca013f303cb083222dbcd20cc94.gif)
 
 # Steps:
+
 ## UI
+
 - [x] Mockup Idea
 - [x] Think about flows for different kinds of clothes
-- [ ] Pass project to typescript
-- [ ] Search Icons
+- [x] Pass project to typescript
+- [x] Search Icons
+- [ ] Create a PWA -- [Article](https://lasfi.to/tutorial/como-crear-pwa-con-react)
 - [ ] Discover Navbar behavior
 - [ ] Add navbar functionality
 - [ ] Add routes
@@ -22,22 +25,22 @@ Inspiration for UI:
 - [ ] Hosting UI
 - [ ] Add upload functionality
 
-
 ## Api
-- [ ] Build a api mockup
+
+- [x] Build a api mockup
 - [ ] Study about how create an API
 - [ ] Create a server
 - [ ] Save data into BD
 - [ ] Hosting Server
 
+---
 
-----
 <img width="822" alt="Screen Shot 2022-10-10 at 11 10 00 AM" src="https://user-images.githubusercontent.com/37992878/194915381-0656bebf-0c6c-46bf-8497-f1f7bf346f64.png">
-
 
 `GET` **/shirts**
 
 To render carousel
+
 ```json
 [
   {
@@ -70,9 +73,6 @@ To render carousel
 ]
 ```
 
-
-
-
 `POST` **/item_id**
 
 Save outfit seleted
@@ -89,10 +89,10 @@ Save outfit seleted
 },
 ```
 
-
 `GET` **/date?<date>**
 
 Get outfit per date
+
 ```json
 [
   {
@@ -128,9 +128,12 @@ Get outfit per date
 `GET` **/date?<item_id>**
 
 Get date when an item was used
+
 ```json
 {
   "id": "ABC12",
   "date": ["2022-04-05", "2022-04-15", "2022-04-24"]
 }
 ```
+
+<!-- https://i.ibb.co/Pz78sFT/Whats-App-Image-2022-11-30-at-2-55-37-PM.jpg -->
